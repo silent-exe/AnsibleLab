@@ -9,21 +9,21 @@ Vagrant.configure("2") do |config|
       :box => "centos/8",
       :ram => 1024,
       :vcpu => 1,
-      :ip => "192.168.29.2"
+      :ip => "192.168.149.200"
     },
     {
       :name => "web2.demo.com",
       :box => "centos/8",
       :ram => 1024,
       :vcpu => 1,
-      :ip => "192.168.29.3"
+      :ip => "192.168.149.201"
     },
     {
       :name => "ansible-host",
       :box => "centos/8",
       :ram => 8048,
       :vcpu => 1,
-      :ip => "192.168.29.4"
+      :ip => "192.168.149.210"
     }
   ]
 
@@ -53,9 +53,9 @@ Vagrant.configure("2") do |config|
        end
       config.vm.provision :shell, path: "bootstrap-node.sh"
       #config.vm.provision :ansible do |ansible|
-      #  ansible.verbose = "v"
-      #  ansible.playbook = "playbook.yml"
-      #end
+        #ansible.verbose = "v"
+        #ansible.playbook = "playbook.yml"
+     # end
    end
   end
 end
