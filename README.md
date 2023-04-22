@@ -5,6 +5,8 @@ This Vagrantfile will create 3 Centos VM's to simulate Ansible control machine a
 
 * Host1 - No GUI
 * Host2 - No GUI
+* Host3 - No GUI
+* Host4 - No GUI
 * ansible-host - No GUI, ansible core installed and Ansible-tower
 
 
@@ -16,24 +18,6 @@ This Vagrantfile will create 3 Centos VM's to simulate Ansible control machine a
 * Vagrant plugins - vagrant-proxyconf - needed if you are running behind proxy
 * Ansible: latest
 * Virtualbox: latest
-
-
-# Note: if the build fail because of the hypervisor errors. You need to follow this steps.
-
-First find out the name of the hypervisor:
-```
-$ lsmod | grep kvm
-kvm_intel             204800  6
-kvm                   593920  1 kvm_intel
-irqbypass              16384  1 kvm
-```
-The one we're interested in is kvm_intel. You might have another.
-
-Blacklist the hypervisor (run the following as root):
-```
-$ echo 'blacklist kvm-intel' >> /etc/modprobe.d/blacklist.conf
-```
-Restart your machine and try running vagrant again.
 
 
 ## Other files included:
@@ -63,25 +47,39 @@ Vagrant.configure("2") do |config|
 # Define VMs with static private IP addresses, vcpu, memory and vagrant-box.
   boxes = [
     {
-      :name => "client2",
-      :box => "bento/centos-7.2",
-      :ram => 512,
+      :name => "web10.demo.com",
+      :box => "generic/centos9s",
+      :ram => 1024,
       :vcpu => 1,
-      :ip => "192.168.29.2"
+      :ip => "192.168.56.200"
     },
     {
-      :name => "client1",
-      :box => "bento/centos-7.2",
-      :ram => 512,
+      :name => "web20.demo.com",
+      :box => "generic/centos9s",
+      :ram => 1024,
       :vcpu => 1,
-      :ip => "192.168.29.3"
+      :ip => "192.168.56.201"
+    },
+    {
+      :name => "db.demo.com",
+      :box => "generic/centos9s",
+      :ram => 1024,
+      :vcpu => 1,
+      :ip => "192.168.56.202"
+    },
+    {
+      :name => "lb.demo.com",
+      :box => "generic/centos9s",
+      :ram => 1024,
+      :vcpu => 1,
+      :ip => "192.168.56.203"
     },
     {
       :name => "ansible-host",
-      :box => "x.x.x.xxx",
-      :ram => 1024,
+      :box => "generic/centos9s",
+      :ram => 8048,
       :vcpu => 1,
-      :ip => "192.168.29.4"
+      :ip => "192.168.56.210"
     }
   ]
 
