@@ -5,25 +5,39 @@ Vagrant.configure("2") do |config|
 # Define VMs with static private IP addresses, vcpu, memory and vagrant-box.
   boxes = [
     {
-      :name => "web1.demo.com",
-      :box => "centos/8",
+      :name => "web10.demo.com",
+      :box => "generic/centos9s",
       :ram => 1024,
       :vcpu => 1,
-      :ip => "192.168.149.200"
+      :ip => "192.168.56.200"
     },
     {
-      :name => "web2.demo.com",
-      :box => "centos/8",
+      :name => "web20.demo.com",
+      :box => "generic/centos9s",
       :ram => 1024,
       :vcpu => 1,
-      :ip => "192.168.149.201"
+      :ip => "192.168.56.201"
+    },
+    {
+      :name => "db.demo.com",
+      :box => "generic/centos9s",
+      :ram => 1024,
+      :vcpu => 1,
+      :ip => "192.168.56.202"
+    },
+    {
+      :name => "lb.demo.com",
+      :box => "generic/centos9s",
+      :ram => 1024,
+      :vcpu => 1,
+      :ip => "192.168.56.203"
     },
     {
       :name => "ansible-host",
-      :box => "centos/8",
+      :box => "generic/centos9s",
       :ram => 8048,
       :vcpu => 1,
-      :ip => "192.168.149.210"
+      :ip => "192.168.56.210"
     }
   ]
 
@@ -53,9 +67,9 @@ Vagrant.configure("2") do |config|
        end
       config.vm.provision :shell, path: "bootstrap-node.sh"
       #config.vm.provision :ansible do |ansible|
-        #ansible.verbose = "v"
-        #ansible.playbook = "playbook.yml"
-     # end
+      #  ansible.verbose = "v"
+      #  ansible.playbook = "playbook.yml"
+      #end
    end
   end
 end

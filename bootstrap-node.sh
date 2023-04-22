@@ -2,6 +2,8 @@
 # configure hosts file for our internal network defined by Vagrantfile
 cat >> /etc/hosts <<-EOL
 # vagrant environment nodes
-192.168.149.200  Web1.demo.com
-192.168.149.201  Web2.demo.com
-192.168.149.210  ansible-host
+192.168.56.200  Web1.demo.com
+192.168.56.201  Web2.demo.com
+192.168.56.202  db.demo.com
+192.168.56.203  lb.demo.com
+192.168.56.210  ansible-host

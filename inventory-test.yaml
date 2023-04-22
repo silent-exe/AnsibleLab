@@ -2,8 +2,16 @@
 192.168.2.195
 192.168.2.196
 
-[tower]
+[db]
 192.168.2.197
+
+[LB]
+192.168.2.198
+
+[Worker]
+
+[tower]
+192.168.2.200
 
 [all:vars]
 ansible_connection=ssh
