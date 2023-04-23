@@ -33,7 +33,7 @@ Vagrant.configure("2") do |config|
       :ip => "192.168.56.203"
     },
     {
-      :name => "ansible-host",
+      :name => "ansible-tower",
       :box => "generic/centos9s",
       :ram => 8048,
       :vcpu => 1,
@@ -66,10 +66,10 @@ Vagrant.configure("2") do |config|
         file.destination    = '/home/vagrant/inventory-test.yaml'
        end
       config.vm.provision :shell, path: "bootstrap-node.sh"
-      #config.vm.provision :ansible do |ansible|
-      #  ansible.verbose = "v"
-      #  ansible.playbook = "playbook.yml"
-      #end
+      config.vm.provision :ansible do |ansible|
+        ansible.verbose = "v"
+        ansible.playbook = "playbook.yml"
+      end
    end
   end
 end
